@@ -128,7 +128,7 @@ export default function AastitvaaSummit() {
       </nav>
 
       {/* Hero Section */}
-      <header className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+      <header className="min-h-screen flex items-center justify-center relative overflow-hidden pt-40 pb-20">
         {/* Animated Background Blobs */}
         <div className="absolute top-20 left-10 w-96 h-96 bg-brand-red/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
         <div className="absolute top-40 right-20 w-96 h-96 bg-brand-orange/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
@@ -138,7 +138,7 @@ export default function AastitvaaSummit() {
           {/* Edition Badge */}
           <div className="inline-flex items-center px-5 py-2 rounded-full bg-brand-red/10 text-brand-red font-bold text-sm border border-brand-red/30 mb-6 animate-[fadeInUp_0.6s_ease-out_forwards]">
             <Sparkles className="w-4 h-4 mr-2" />
-            SECOND EDITION • 21 DECEMBER 2024
+            FIRST EDITION • 21 DECEMBER 2024
           </div>
 
           {/* Main Title */}
@@ -147,7 +147,7 @@ export default function AastitvaaSummit() {
               <span className="text-brand-red">AASTITVAA</span>
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-brand-orange to-brand-red">
-                SUMMIT 2.0
+                SUMMIT
               </span>
             </h1>
           </div>
@@ -371,7 +371,7 @@ export default function AastitvaaSummit() {
                   Be Part of the Movement
                 </h2>
                 <p className="text-gray-600">
-                  Register your interest for Aastitvaa Summit 2.0. <br />
+                  Register your interest for Aastitvaa Summit. <br />
                   <span className="font-semibold text-brand-red">21st December 2024</span> — Mark your calendars.
                 </p>
               </div>
@@ -428,7 +428,7 @@ export default function AastitvaaSummit() {
             <br />
             It's time to be heard."
           </blockquote>
-          <p className="mt-8 text-xl opacity-80">— Aastitvaa Summit 2.0</p>
+          <p className="mt-8 text-xl opacity-80">— Aastitvaa Summit</p>
         </div>
       </section>
 
