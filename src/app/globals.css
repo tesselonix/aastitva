@@ -8,6 +8,11 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Offset for fixed navbar */
+}
+
 /* Torn Paper Effect */
 .torn-paper-top {
   position: absolute;

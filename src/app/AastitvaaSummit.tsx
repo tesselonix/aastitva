@@ -9,8 +9,17 @@ import { AnimatedBackground } from '../components/AnimatedBackground';
 export default function AastitvaaSummit() {
   const [email, setEmail] = useState('');
   const [formState, setFormState] = useState('idle');
-  const [buttonText, setButtonText] = useState('Register Interest');
+  const [buttonText, setButtonText] = useState('Join Waitlist');
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  
+  // Question form state
+  const [questionName, setQuestionName] = useState('');
+  const [questionEmail, setQuestionEmail] = useState('');
+  const [questionText, setQuestionText] = useState('');
+  const [questionFormState, setQuestionFormState] = useState('idle');
+  const [questionButtonText, setQuestionButtonText] = useState('Submit Question');
+
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz9-fn1suJhple0UZjc8JJzBe1sVMN4u7PrB6SzvmbLiWV9qE2hNlJNvJ86MxrCxJd_/exec';
 
   const testimonials = [
     {
@@ -53,21 +62,76 @@ export default function AastitvaaSummit() {
     }
   ];
 
-  const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleWaitlistSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormState('loading');
-    setButtonText('Registering...');
+    setButtonText('Joining...');
 
-    setTimeout(() => {
+    try {
+      const formData = new FormData();
+      formData.append('formType', 'waitlist');
+      formData.append('email', email);
+
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      });
+
       setFormState('success');
-      setButtonText('Registered! ✓');
+      setButtonText('You are on the list');
       setEmail('');
 
       setTimeout(() => {
         setFormState('idle');
-        setButtonText('Register Interest');
+        setButtonText('Join Waitlist');
       }, 4000);
-    }, 1500);
+    } catch {
+      setFormState('error');
+      setButtonText('Try Again');
+      setTimeout(() => {
+        setFormState('idle');
+        setButtonText('Join Waitlist');
+      }, 3000);
+    }
+  };
+
+  const handleQuestionSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setQuestionFormState('loading');
+    setQuestionButtonText('Submitting...');
+
+    try {
+      const formData = new FormData();
+      formData.append('formType', 'question');
+      formData.append('name', questionName || 'Anonymous');
+      formData.append('email', questionEmail);
+      formData.append('question', questionText);
+
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      });
+
+      setQuestionFormState('success');
+      setQuestionButtonText('Question Submitted');
+      setQuestionName('');
+      setQuestionEmail('');
+      setQuestionText('');
+
+      setTimeout(() => {
+        setQuestionFormState('idle');
+        setQuestionButtonText('Submit Question');
+      }, 4000);
+    } catch {
+      setQuestionFormState('error');
+      setQuestionButtonText('Try Again');
+      setTimeout(() => {
+        setQuestionFormState('idle');
+        setQuestionButtonText('Submit Question');
+      }, 3000);
+    }
   };
 
   useEffect(() => {
@@ -415,54 +479,149 @@ export default function AastitvaaSummit() {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-green/10 rounded-full translate-x-1/2 translate-y-1/2"></div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl mx-auto">
-            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-brand-green/10">
-              <div className="text-center mb-8">
-                <span className="inline-flex items-center px-4 py-1 rounded-full bg-brand-orange/10 text-brand-orange font-bold text-sm mb-4">
-                  Limited Seats Available
-                </span>
-                <h2 className="text-3xl md:text-4xl font-italiana font-bold text-gray-800 mb-4">
-                  Be Part of the Movement
-                </h2>
-                <p className="text-gray-600">
-                  Register your interest for Aastitvaa Summit. <br />
-                  <span className="font-semibold text-brand-red">Stay tuned</span> — Dates to be announced soon.
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-1 rounded-full bg-brand-orange/10 text-brand-orange font-bold text-sm mb-4 tracking-wider uppercase">
+              Limited Seats Available
+            </span>
+            <h2 className="text-4xl md:text-5xl font-italiana font-bold text-gray-800 mb-4 py-2">
+              Be Part of the Movement
+            </h2>
+            <p className="text-gray-600 max-w-xl mx-auto">
+              Register your interest for Aastitvaa Summit and submit questions you want us to address.
+              <br />
+              <span className="font-semibold text-brand-red">Dates coming soon</span>
+            </p>
+          </div>
+
+          {/* Two Column Forms */}
+          <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            
+            {/* Waitlist Form */}
+            <div className="glass-card rounded-3xl p-8 md:p-10 shadow-premium-lg">
+              <div className="mb-8">
+                <div className="w-12 h-12 rounded-xl bg-brand-red/10 flex items-center justify-center mb-4">
+                  <Mail className="w-6 h-6 text-brand-red" />
+                </div>
+                <h3 className="text-2xl font-italiana font-bold text-gray-800 mb-2">
+                  Join the Waitlist
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Be the first to know when registrations open. We will notify you with all event details.
                 </p>
               </div>
 
-              <form onSubmit={handleSignup} className="space-y-4">
+              <form onSubmit={handleWaitlistSignup} className="space-y-4">
                 <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Email Address
+                  </label>
                   <input
                     type="email"
-                    placeholder="Your email address"
+                    placeholder="your.email@example.com"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white custom-input transition-all text-lg"
+                    className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white/50 focus:bg-white custom-input transition-all text-base"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={formState === 'loading'}
-                  className={`w-full text-white font-bold px-8 py-4 rounded-xl text-lg transform hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-2 shadow-lg ${
-                    formState === 'success' ? 'bg-brand-green shadow-brand-green/30' : 'bg-brand-red shadow-brand-red/30'
+                  className={`w-full text-white font-bold px-8 py-4 rounded-xl text-base btn-premium flex items-center justify-center gap-2 ${
+                    formState === 'success' ? 'bg-brand-green' : formState === 'error' ? 'bg-red-500' : 'bg-brand-red'
                   }`}
                 >
-                  {buttonText} {formState !== 'success' && <ArrowRight className="w-5 h-5" />}
+                  {buttonText}
+                  {formState === 'idle' && <ArrowRight className="w-5 h-5" />}
                 </button>
               </form>
 
               {formState === 'success' && (
-                <div className="mt-6 bg-green-50 border border-green-200 rounded-xl p-4 text-center">
-                  <p className="text-green-700 font-semibold">
-                    🎉 You're on the list! We'll send you all the details soon.
+                <div className="mt-6 bg-brand-green/10 border border-brand-green/20 rounded-xl p-4 text-center">
+                  <p className="text-brand-green font-semibold">
+                    Welcome aboard. We will be in touch soon.
                   </p>
                 </div>
               )}
 
               <p className="text-center text-gray-500 text-sm mt-6">
-                Join 500+ youth who are ready to speak up
+                Join 500+ youth ready to speak up
               </p>
+            </div>
+
+            {/* Question Submission Form */}
+            <div className="glass-card rounded-3xl p-8 md:p-10 shadow-premium-lg">
+              <div className="mb-8">
+                <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center mb-4">
+                  <MessageCircle className="w-6 h-6 text-brand-orange" />
+                </div>
+                <h3 className="text-2xl font-italiana font-bold text-gray-800 mb-2">
+                  Submit a Question
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Have a topic you want discussed at the summit? Share your question or suggestion.
+                </p>
+              </div>
+
+              <form onSubmit={handleQuestionSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Your Name <span className="text-gray-400 font-normal">(optional)</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Your name"
+                    value={questionName}
+                    onChange={(e) => setQuestionName(e.target.value)}
+                    className="w-full px-5 py-3 rounded-xl border border-gray-200 bg-white/50 focus:bg-white custom-input transition-all text-base"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="your.email@example.com"
+                    required
+                    value={questionEmail}
+                    onChange={(e) => setQuestionEmail(e.target.value)}
+                    className="w-full px-5 py-3 rounded-xl border border-gray-200 bg-white/50 focus:bg-white custom-input transition-all text-base"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Question or Topic
+                  </label>
+                  <textarea
+                    placeholder="What topic would you like us to discuss?"
+                    required
+                    rows={4}
+                    value={questionText}
+                    onChange={(e) => setQuestionText(e.target.value)}
+                    className="w-full px-5 py-3 rounded-xl border border-gray-200 bg-white/50 focus:bg-white custom-input transition-all text-base resize-none"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={questionFormState === 'loading'}
+                  className={`w-full text-white font-bold px-8 py-4 rounded-xl text-base btn-premium flex items-center justify-center gap-2 ${
+                    questionFormState === 'success' ? 'bg-brand-green' : questionFormState === 'error' ? 'bg-red-500' : 'bg-brand-orange'
+                  }`}
+                >
+                  {questionButtonText}
+                  {questionFormState === 'idle' && <ArrowRight className="w-5 h-5" />}
+                </button>
+              </form>
+
+              {questionFormState === 'success' && (
+                <div className="mt-6 bg-brand-green/10 border border-brand-green/20 rounded-xl p-4 text-center">
+                  <p className="text-brand-green font-semibold">
+                    Thank you for your submission. Your voice matters.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
