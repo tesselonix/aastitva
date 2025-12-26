@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import { Mail, Instagram, MessageCircle, Heart, Users, Mic2, Calendar, MapPin, ChevronDown, Quote, Sparkles, Shield, Target, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import { ScrollReveal } from '../components/ScrollReveal';
+import { AnimatedBackground } from '../components/AnimatedBackground';
 
 export default function AastitvaaSummit() {
   const [email, setEmail] = useState('');
@@ -88,9 +90,10 @@ export default function AastitvaaSummit() {
   }, []);
 
   return (
-    <div className="antialiased text-gray-800 min-h-screen flex flex-col">
+    <div className="antialiased text-gray-800 min-h-screen flex flex-col relative">
+      <AnimatedBackground />
       {/* Navbar */}
-      <nav className="w-full py-4 px-6 md:px-12 flex justify-between items-center bg-brand-cream/80 backdrop-blur-md fixed top-0 z-50 border-b border-brand-green/10">
+      <nav className="w-full py-4 px-6 md:px-12 flex justify-between items-center glass-card fixed top-0 z-50 border-b border-brand-green/10">
         <div className="flex items-center gap-1">
           <Image
             src="https://i.ibb.co/1fgg4y3b/1.png"
@@ -112,7 +115,7 @@ export default function AastitvaaSummit() {
           <a href="#theme" className="text-gray-700 hover:text-brand-red transition-colors font-medium">The Theme</a>
           <a href="#struggles" className="text-gray-700 hover:text-brand-red transition-colors font-medium">Why This Matters</a>
           <a href="#event" className="text-gray-700 hover:text-brand-red transition-colors font-medium">Event Details</a>
-          <a href="#register" className="bg-brand-red text-white px-6 py-2 rounded-full font-bold hover:bg-brand-red/90 transition-all transform hover:scale-105">
+          <a href="#register" className="bg-brand-red text-white px-6 py-2 rounded-full font-bold btn-premium shimmer">
             Join Now
           </a>
         </div>
@@ -136,51 +139,55 @@ export default function AastitvaaSummit() {
 
         <div className="container mx-auto px-4 text-center relative z-10">
           {/* Edition Badge */}
-          <div className="inline-flex items-center px-5 py-2 rounded-full bg-brand-red/10 text-brand-red font-bold text-sm border border-brand-red/30 mb-6 animate-[fadeInUp_0.6s_ease-out_forwards]">
+          <div className="inline-flex items-center px-5 py-2 rounded-full glass-card text-brand-red font-bold text-sm border border-brand-red/30 mb-6 animate-float">
             <Sparkles className="w-4 h-4 mr-2" />
-            FIRST EDITION • 21 DECEMBER 2024
+            FIRST EDITION
           </div>
 
           {/* Main Title */}
-          <div className="space-y-4 mb-8 animate-[fadeInUp_0.8s_ease-out_0.2s_forwards] opacity-0">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold tracking-tight">
-              <span className="text-brand-red">AASTITVAA</span>
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-brand-orange to-brand-red">
-                SUMMIT
-              </span>
-            </h1>
-          </div>
+          <ScrollReveal direction='up' delay={0.2} width="100%">
+            <div className="space-y-4 mb-8">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-italiana font-bold tracking-tight">
+                <span className="text-brand-red">AASTITVAA</span>
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-brand-orange to-brand-red">
+                  SUMMIT
+                </span>
+              </h1>
+            </div>
+          </ScrollReveal>
 
           {/* Theme Statement - The Hook */}
-          <div className="max-w-4xl mx-auto mb-12 animate-[fadeInUp_0.8s_ease-out_0.4s_forwards] opacity-0">
-            <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-brand-green/10 relative">
-              <Quote className="absolute top-4 left-4 w-8 h-8 text-brand-orange/40" />
-              <Quote className="absolute bottom-4 right-4 w-8 h-8 text-brand-orange/40 rotate-180" />
-              <h2 className="text-2xl md:text-4xl font-serif font-bold text-gray-800 leading-tight">
-                "Why Do Indian Youth{' '}
-                <span className="text-brand-red underline decoration-brand-orange decoration-4 underline-offset-4">
-                  Hide Their Real Dreams
-                </span>{' '}
-                From Parents?"
-              </h2>
-              <p className="mt-4 text-gray-600 text-lg md:text-xl">
-                A summit about silent struggles, suppressed ambitions, and the courage to speak up.
-              </p>
+          <ScrollReveal direction='up' delay={0.4} width='100%'>
+            <div className="max-w-4xl mx-auto mb-12">
+              <div className="glass-card rounded-2xl p-8 shadow-premium-lg relative">
+                <Quote className="absolute top-4 left-4 w-8 h-8 text-brand-orange/40" />
+                <Quote className="absolute bottom-4 right-4 w-8 h-8 text-brand-orange/40 rotate-180" />
+                <h2 className="text-2xl md:text-4xl font-italiana font-bold text-gray-800 leading-tight">
+                  "Why Do Indian Youth{' '}
+                  <span className="text-brand-red underline decoration-brand-orange decoration-4 underline-offset-4">
+                    Hide Their Real Dreams
+                  </span>{' '}
+                  From Parents?"
+                </h2>
+                <p className="mt-4 text-gray-600 text-lg md:text-xl font-serif">
+                  A summit about silent struggles, suppressed ambitions, and the courage to speak up.
+                </p>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* CTA Buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-center items-center animate-[fadeInUp_0.8s_ease-out_0.6s_forwards] opacity-0">
             <a 
               href="#register" 
-              className="bg-brand-red text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-brand-red/90 transition-all transform hover:scale-105 flex items-center gap-2 shadow-lg shadow-brand-red/30"
+              className="bg-brand-red text-white px-10 py-4 rounded-full font-bold text-lg btn-premium shimmer flex items-center gap-2 glow-red"
             >
               Reserve Your Spot <ArrowRight className="w-5 h-5" />
             </a>
             <a 
               href="#theme" 
-              className="bg-white text-brand-green px-10 py-4 rounded-full font-bold text-lg border-2 border-brand-green hover:bg-brand-green hover:text-white transition-all flex items-center gap-2"
+              className="glass-card text-brand-green px-10 py-4 rounded-full font-bold text-lg border-2 border-brand-green hover:bg-brand-green hover:text-white transition-all flex items-center gap-2 hover-scale"
             >
               Learn More <ChevronDown className="w-5 h-5" />
             </a>
@@ -190,7 +197,7 @@ export default function AastitvaaSummit() {
           <div className="flex flex-wrap justify-center gap-6 mt-12 animate-[fadeInUp_0.8s_ease-out_0.8s_forwards] opacity-0">
             <div className="flex items-center gap-2 text-gray-600">
               <Calendar className="w-5 h-5 text-brand-red" />
-              <span className="font-medium">21 December 2024</span>
+              <span className="font-medium">Coming Soon</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
               <MapPin className="w-5 h-5 text-brand-green" />
@@ -214,9 +221,11 @@ export default function AastitvaaSummit() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <span className="text-brand-orange font-bold tracking-widest uppercase text-sm">The Central Theme</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mt-4 text-gray-800">
-              Breaking the Silence
-            </h2>
+            <ScrollReveal width="100%">
+              <h2 className="text-4xl md:text-5xl font-italiana font-bold mt-4 mb-2 py-2 text-gray-800">
+                Breaking the Silence
+              </h2>
+            </ScrollReveal>
             <p className="mt-6 text-xl text-gray-600 leading-relaxed">
               Every year, millions of Indian youth suppress their true aspirations. They smile at the dinner table while their 
               <span className="text-brand-red font-semibold"> real dreams remain locked away</span>. 
@@ -226,22 +235,22 @@ export default function AastitvaaSummit() {
 
           {/* Emotional Statistics */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-gradient-to-br from-brand-red/5 to-brand-red/10 rounded-2xl p-8 text-center border border-brand-red/10 transform hover:scale-105 transition-all">
-              <div className="text-5xl md:text-6xl font-bold text-brand-red mb-2">67%</div>
+            <div className="glass-card bg-gradient-to-br from-brand-red/5 to-brand-red/10 rounded-2xl p-8 text-center border border-brand-red/10 card-hover">
+              <div className="text-5xl md:text-6xl font-bold gradient-text-premium mb-2">67%</div>
               <p className="text-gray-700 font-medium">of Indian students pursue careers chosen by parents</p>
             </div>
-            <div className="bg-gradient-to-br from-brand-orange/5 to-brand-orange/10 rounded-2xl p-8 text-center border border-brand-orange/10 transform hover:scale-105 transition-all">
+            <div className="glass-card bg-gradient-to-br from-brand-orange/5 to-brand-orange/10 rounded-2xl p-8 text-center border border-brand-orange/10 card-hover">
               <div className="text-5xl md:text-6xl font-bold text-brand-orange mb-2">4 in 5</div>
               <p className="text-gray-700 font-medium">youth feel they cannot openly discuss career dreams at home</p>
             </div>
-            <div className="bg-gradient-to-br from-brand-green/5 to-brand-green/10 rounded-2xl p-8 text-center border border-brand-green/10 transform hover:scale-105 transition-all">
+            <div className="glass-card bg-gradient-to-br from-brand-green/5 to-brand-green/10 rounded-2xl p-8 text-center border border-brand-green/10 card-hover">
               <div className="text-5xl md:text-6xl font-bold text-brand-green mb-2">89%</div>
               <p className="text-gray-700 font-medium">wish they had a safe space to express their true aspirations</p>
             </div>
           </div>
 
           {/* Testimonial Carousel */}
-          <div className="max-w-3xl mx-auto bg-brand-cream rounded-2xl p-8 md:p-12 shadow-lg border border-brand-green/10 relative overflow-hidden">
+          <div className="max-w-3xl mx-auto glass-card rounded-2xl p-8 md:p-12 shadow-premium-lg relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-brand-red/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
             
@@ -287,9 +296,11 @@ export default function AastitvaaSummit() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <span className="text-brand-red font-bold tracking-widest uppercase text-sm">Why This Matters</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mt-4 text-gray-800">
-              The Silent Struggles
-            </h2>
+            <ScrollReveal width="100%">
+              <h2 className="text-4xl md:text-5xl font-italiana font-bold mt-4 mb-2 py-2 text-gray-800">
+                The Silent Struggles
+              </h2>
+            </ScrollReveal>
             <p className="mt-4 text-gray-600 text-lg max-w-2xl mx-auto">
               This summit addresses the unspoken battles that Indian youth fight every day
             </p>
@@ -299,7 +310,7 @@ export default function AastitvaaSummit() {
             {struggles.map((struggle, idx) => (
               <div 
                 key={idx}
-                className="bg-white rounded-2xl p-8 shadow-lg border border-brand-green/10 hover:shadow-xl transition-all group hover:-translate-y-2"
+                className="glass-card rounded-2xl p-8 shadow-premium card-hover group"
               >
                 <div className={`w-16 h-16 rounded-xl mb-6 flex items-center justify-center ${
                   idx === 0 ? 'bg-brand-red/10 text-brand-red' :
@@ -317,14 +328,57 @@ export default function AastitvaaSummit() {
         </div>
       </section>
 
+      {/* Founder Section */}
+      <section className="py-24 bg-brand-cream relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto">
+            <div className="md:w-1/2 relative">
+               <div className="absolute inset-0 bg-brand-orange/20 rounded-2xl transform translate-x-4 translate-y-4"></div>
+               <Image 
+                 src="/image.png" 
+                 alt="Raghav Juneja - Founder" 
+                 width={500} 
+                 height={600} 
+                 className="rounded-2xl shadow-xl relative z-10 w-full object-cover"
+               />
+            </div>
+            <div className="md:w-1/2 space-y-6">
+              <span className="text-brand-red font-bold tracking-widest uppercase text-sm">About the Founder</span>
+              <h2 className="text-4xl font-serif font-bold text-gray-800">Raghav Juneja</h2>
+              <div className="space-y-4 text-gray-700 leading-relaxed text-lg">
+                <p>
+                  Raghav Juneja is the Founder of <span className="font-semibold text-brand-red">Aastitvaa</span>, a youth-driven platform created with one clear belief — every young voice deserves a space to be heard.
+                </p>
+                <p>
+                  With a deep interest in youth issues, society, politics, and leadership, Raghav started Aastitvaa to break the silence around topics that are often ignored, avoided, or considered taboo.
+                </p>
+                <p>
+                  He strongly believes that today’s youth is not directionless — it is <span className="italic">under-represented</span>. Through Aastitvaa summits and discussions, he aims to give students and young minds a platform to express opinions, challenge narratives, and think independently.
+                </p>
+                <div className="bg-white/50 p-6 rounded-xl border-l-4 border-brand-orange my-6">
+                  <p className="italic text-gray-600">
+                    Under his leadership, Aastitvaa successfully hosted its first summit on “Politics as a Career – Taboo or Necessity”, receiving 40+ registrations within just two days, proving the hunger among youth for meaningful conversations.
+                  </p>
+                </div>
+                <p className="font-medium text-gray-800">
+                  Raghav’s vision is to make Aastitvaa India’s most trusted youth platform, where dialogue leads to clarity, confidence, and change.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Event Details Section */}
       <section id="event" className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="text-brand-green font-bold tracking-widest uppercase text-sm">What Awaits You</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mt-4 text-gray-800">
-              Experience the Summit
-            </h2>
+            <ScrollReveal width="100%">
+              <h2 className="text-4xl md:text-5xl font-italiana font-bold mt-4 mb-2 py-2 text-gray-800">
+                Experience the Summit
+              </h2>
+            </ScrollReveal>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -367,12 +421,12 @@ export default function AastitvaaSummit() {
                 <span className="inline-flex items-center px-4 py-1 rounded-full bg-brand-orange/10 text-brand-orange font-bold text-sm mb-4">
                   Limited Seats Available
                 </span>
-                <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-800 mb-4">
+                <h2 className="text-3xl md:text-4xl font-italiana font-bold text-gray-800 mb-4">
                   Be Part of the Movement
                 </h2>
                 <p className="text-gray-600">
                   Register your interest for Aastitvaa Summit. <br />
-                  <span className="font-semibold text-brand-red">21st December 2024</span> — Mark your calendars.
+                  <span className="font-semibold text-brand-red">Stay tuned</span> — Dates to be announced soon.
                 </p>
               </div>
 
@@ -421,13 +475,15 @@ export default function AastitvaaSummit() {
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <blockquote className="text-3xl md:text-5xl font-serif font-bold leading-tight max-w-4xl mx-auto">
-            "Your dreams are valid.
-            <br />
-            <span className="text-brand-orange">Your voice matters.</span>
-            <br />
-            It's time to be heard."
-          </blockquote>
+          <ScrollReveal width='100%'>
+            <blockquote className="text-3xl md:text-5xl font-italiana font-bold leading-tight max-w-4xl mx-auto">
+              "Your dreams are valid.
+              <br />
+              <span className="text-brand-orange">Your voice matters.</span>
+              <br />
+              It's time to be heard."
+            </blockquote>
+          </ScrollReveal>
           <p className="mt-8 text-xl opacity-80">— Aastitvaa Summit</p>
         </div>
       </section>
@@ -459,7 +515,7 @@ export default function AastitvaaSummit() {
               <div className="space-y-3 text-gray-400">
                 <div className="flex items-center gap-3">
                   <Calendar className="w-5 h-5 text-brand-red" />
-                  <span>21 December 2024</span>
+                  <span>Coming Soon</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="w-5 h-5 text-brand-green" />
