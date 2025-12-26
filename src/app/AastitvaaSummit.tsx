@@ -23,42 +23,42 @@ export default function AastitvaaSummit() {
 
   const testimonials = [
     {
-      quote: "I wanted to be a musician, but I told my parents I'm preparing for IIT. This summit finally gave me courage to speak up.",
-      name: "Ananya, 19",
-      dream: "Aspiring Musician"
+      quote: "I used to think my vote didn't matter. Then I started a campaign on Instagram that reached 10k people. Digital is power.",
+      name: "Riya, 21",
+      dream: "Digital Activist"
     },
     {
-      quote: "Every day I draw in secret. Art is my soul, but engineering is my 'career'. Time to break the silence.",
-      name: "Rahul, 21",
-      dream: "Hidden Artist"
+      quote: "Politics felt like an old man's game until I saw how misinformation spreads online. We need to be the fact-checkers.",
+      name: "Aryan, 20",
+      dream: "Political Analyst"
     },
     {
-      quote: "They think I'm studying law. I'm actually building a startup. Aastitvaa helped me find my voice.",
-      name: "Priya, 22",
-      dream: "Secret Entrepreneur"
+      quote: "Social media isn't just for memes. It's where the real opposition happens today. It's our parliament.",
+      name: "Sneha, 22",
+      dream: "Civic Leader"
     }
   ];
 
   const struggles = [
     {
       icon: <MessageCircle className="w-8 h-8" />,
-      title: "Suppressed Ambitions",
-      description: "Dreams whispered in solitude, never shared at the dinner table"
-    },
-    {
-      icon: <Heart className="w-8 h-8" />,
-      title: "Fear of Disappointment",
-      description: "The weight of expectations crushing authentic aspirations"
+      title: "Misinformation vs Truth",
+      description: "Navigating the maze of fake news and echo chambers"
     },
     {
       icon: <Shield className="w-8 h-8" />,
-      title: "Career Stereotypes",
-      description: "Doctor, Engineer, Lawyer — the only 'acceptable' choices"
+      title: "Cancel Culture",
+      description: "Accountability or mob rule? Drawing the line online."
     },
     {
       icon: <Target className="w-8 h-8" />,
-      title: "Find Your Voice",
-      description: "This summit is your safe space to speak your truth"
+      title: "The Algorithm",
+      description: "Are our opinions defined by what the algorithm shows us?"
+    },
+    {
+      icon: <Mic2 className="w-8 h-8" />,
+      title: "Power of One",
+      description: "How a single tweet or reel can spark a movement."
     }
   ];
 
@@ -228,14 +228,14 @@ export default function AastitvaaSummit() {
                 <Quote className="absolute top-4 left-4 w-8 h-8 text-brand-orange/40" />
                 <Quote className="absolute bottom-4 right-4 w-8 h-8 text-brand-orange/40 rotate-180" />
                 <h2 className="text-2xl md:text-4xl font-italiana font-bold text-gray-800 leading-tight">
-                  "Why Do Indian Youth{' '}
+                  "Is Social Media the{' '}
                   <span className="text-brand-red underline decoration-brand-orange decoration-4 underline-offset-4">
-                    Hide Their Real Dreams
+                    New Politics
                   </span>{' '}
-                  From Parents?"
+                  for the Youth?"
                 </h2>
                 <p className="mt-4 text-gray-600 text-lg md:text-xl font-serif">
-                  A summit about silent struggles, suppressed ambitions, and the courage to speak up.
+                  A summit about digital democracy, influence, and the power of the online voice.
                 </p>
               </div>
             </div>
@@ -287,29 +287,28 @@ export default function AastitvaaSummit() {
             <span className="text-brand-orange font-bold tracking-widest uppercase text-sm">The Central Theme</span>
             <ScrollReveal width="100%">
               <h2 className="text-4xl md:text-5xl font-italiana font-bold mt-4 mb-2 py-2 text-gray-800">
-                Breaking the Silence
+                The Digital Revolution
               </h2>
             </ScrollReveal>
             <p className="mt-6 text-xl text-gray-600 leading-relaxed">
-              Every year, millions of Indian youth suppress their true aspirations. They smile at the dinner table while their 
-              <span className="text-brand-red font-semibold"> real dreams remain locked away</span>. 
-              This summit is about giving voice to those whispered ambitions.
+              In an era where a hashtag can topple governments, <span className="text-brand-red font-semibold">your phone is your most powerful tool</span>. 
+              We are moving from polling booths to comment sections. The question is: Are you just a spectator, or a player?
             </p>
           </div>
 
           {/* Emotional Statistics */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="glass-card bg-gradient-to-br from-brand-red/5 to-brand-red/10 rounded-2xl p-8 text-center border border-brand-red/10 card-hover">
-              <div className="text-5xl md:text-6xl font-bold gradient-text-premium mb-2">67%</div>
-              <p className="text-gray-700 font-medium">of Indian students pursue careers chosen by parents</p>
+              <div className="text-5xl md:text-6xl font-bold gradient-text-premium mb-2">80%</div>
+              <p className="text-gray-700 font-medium">of youth consume political news primarily via Social Media</p>
             </div>
             <div className="glass-card bg-gradient-to-br from-brand-orange/5 to-brand-orange/10 rounded-2xl p-8 text-center border border-brand-orange/10 card-hover">
-              <div className="text-5xl md:text-6xl font-bold text-brand-orange mb-2">4 in 5</div>
-              <p className="text-gray-700 font-medium">youth feel they cannot openly discuss career dreams at home</p>
+              <div className="text-5xl md:text-6xl font-bold text-brand-orange mb-2">#1</div>
+              <p className="text-gray-700 font-medium">Digital Activism is now the primary form of civic engagement</p>
             </div>
             <div className="glass-card bg-gradient-to-br from-brand-green/5 to-brand-green/10 rounded-2xl p-8 text-center border border-brand-green/10 card-hover">
-              <div className="text-5xl md:text-6xl font-bold text-brand-green mb-2">89%</div>
-              <p className="text-gray-700 font-medium">wish they had a safe space to express their true aspirations</p>
+              <div className="text-5xl md:text-6xl font-bold text-brand-green mb-2">24/7</div>
+              <p className="text-gray-700 font-medium">The political conversation never stops online</p>
             </div>
           </div>
 
@@ -362,11 +361,11 @@ export default function AastitvaaSummit() {
             <span className="text-brand-red font-bold tracking-widest uppercase text-sm">Why This Matters</span>
             <ScrollReveal width="100%">
               <h2 className="text-4xl md:text-5xl font-italiana font-bold mt-4 mb-2 py-2 text-gray-800">
-                The Silent Struggles
+                The New Battleground
               </h2>
             </ScrollReveal>
             <p className="mt-4 text-gray-600 text-lg max-w-2xl mx-auto">
-              This summit addresses the unspoken battles that Indian youth fight every day
+              From keyboard warriors to real-world impact, we explore the frontiers of digital democracy
             </p>
           </div>
 
@@ -636,11 +635,11 @@ export default function AastitvaaSummit() {
         <div className="container mx-auto px-4 text-center relative z-10">
           <ScrollReveal width='100%'>
             <blockquote className="text-3xl md:text-5xl font-italiana font-bold leading-tight max-w-4xl mx-auto">
-              "Your dreams are valid.
+              "Your voice is your vote.
               <br />
-              <span className="text-brand-orange">Your voice matters.</span>
+              <span className="text-brand-orange">Your influence is power.</span>
               <br />
-              It's time to be heard."
+              Use it wisely."
             </blockquote>
           </ScrollReveal>
           <p className="mt-8 text-xl opacity-80">— Aastitvaa Summit</p>
